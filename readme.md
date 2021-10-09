@@ -2,6 +2,8 @@
 
 Mail-listener2 library for node.js. Get notification when new email arrived to inbox or when message metadata (e.g. flags) changes externally. Uses IMAP protocol.
 
+**Reason for forking**: added expicit command to mark an email as SEEN (was not working for me otherwise with GoDaddy's mail).
+
 We are using these libraries: [node-imap](https://github.com/mscdex/node-imap), [mailparser](https://github.com/andris9/mailparser).
 
 Heavily inspired by [mail-listener](https://github.com/circuithub/mail-listener).

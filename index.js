@@ -91,9 +91,16 @@ function parseUnread() {
       self.emit('error', err);
     } else if (results.length > 0) {
       async.each(results, function( result, callback) {
+        if(self.markSeen) {
+          self.imap.setFlags(result, ['\\Seen'], function(err) {
+            if (err) {
+                console.log(JSON.stringify(err, null, 2));
+            }
+          });
+        }
+
         var f = self.imap.fetch(result, {
           bodies: '',
-          markSeen: self.markSeen
         });
         f.on('message', function(msg, seqno) {
           var parser = new MailParser(self.mailParserOptions);
